@@ -1,3 +1,4 @@
+const connectDB = require("./db/connect")
 const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes/tasks");
@@ -18,5 +19,13 @@ app.use("/v1/api/tasks", routes)
 //     mongoose.connect("mongodb://localhost:27017/express")
 // }
 
+const start = async () => {
+    try {
+        await connectDB()
+        app.listen(PORT, () => { console.log(`Server still listening at ${PORT}`) })
+    } catch (error) {
+        console.log(error)
+    }
+}
 
-app.listen(PORT, ()=>{`Server still listening at ${PORT}`})
+start()

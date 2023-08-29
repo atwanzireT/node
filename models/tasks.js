@@ -1,12 +1,12 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const NewsModelSchema = new Schema({
-    title : String,
-    detail : String,
+const TaskSchema = new Schema({
+    name : {type:String, required:[true, "Must Provide name!"]},
+    completed : Boolean,
 })
 
-const News = mongoose.model('News', NewsModelSchema);
+const Task = mongoose.model('Task', TaskSchema);
 module.exports = {
-    News
+    Task
 }; 
